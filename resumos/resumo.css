@@ -109,3 +109,28 @@ body.dark-mode .comentario {
     text-shadow: 0 0 1px rgba(124, 179, 66, 0.3);
 }
 
+pre {
+    white-space: pre-wrap; /* Permite quebra de linha dentro de <pre> */
+    word-break: break-word; /* Quebra palavras longas */
+    overflow-x: auto; /* Scroll horizontal se necessário */
+    background-color: #eee;
+    padding: 1em;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+/* Ajuste para os comentários nos blocos de código */
+pre code .comentario {
+    display: block; /* Força quebra de linha em telas pequenas */
+    margin-top: 0.3em;
+    font-size: 0.9em;
+}
+
+/* Em telas maiores, mantém os comentários na mesma linha */
+@media (min-width: 768px) {
+    pre code .comentario {
+        display: inline;
+        margin-left: 10px;
+    }
+}
+

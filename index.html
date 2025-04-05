@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Resumo: Git e GitHub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Resumo das aulas do módulo Git e GitHub do Bootcamp DIO + Bradesco.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Resumo: Git e GitHub</h1>
+        <p>Módulo do Bootcamp DIO + Bradesco</p>
+        <button id="toggle-dark" aria-label="Alternar modo escuro/claro">🌙</button>
+    </header>
+
+    <main aria-label="Conteúdo principal">
+        <p>Acesse os principais resumos das aulas abaixo:</p>
+        <nav>
+            <ul>
+                <li>📘 <a href="resumos/aula01.html">AULA01 – Introdução ao Versionamento</a></li>
+                <li>🛠️ <a href="resumos/aula02.html">AULA02 – Comandos Básicos</a></li>
+                <li>🌐 <a href="resumos/aula03.html">AULA03 – Repositórios Remotos</a></li>
+                <li>🌿 <a href="resumos/aula04.html">AULA04 – Branches</a></li>
+                <li>🤝 <a href="resumos/aula05.html">AULA05 – Colaboração com GitHub</a></li>
+                <li>✅ <a href="resumos/aula06.html">AULA06 – Boas Práticas</a></li>
+                <li>🔑 <a href="resumos/token.html">TOKEN – Criando e Usando Token</a></li>
+                <li>⌨ <a href="resumos/comandos.html">Comandos Git – Lista de comandos Git</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <script>
+        const toggle = document.getElementById('toggle-dark');
+        const body = document.body;
+
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            toggle.textContent = '☀️';
+        }
+
+        toggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const darkModeActive = body.classList.contains('dark-mode');
+            toggle.textContent = darkModeActive ? '☀️' : '🌙';
+            localStorage.setItem('theme', darkModeActive ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>

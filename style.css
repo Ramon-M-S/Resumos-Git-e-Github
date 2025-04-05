@@ -1,0 +1,123 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f5f7fa;
+    color: #333;
+    transition: background 0.3s, color 0.3s;
+}
+
+header {
+    background: #24292e;
+    color: #fff;
+    padding: 1rem 2rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+}
+
+nav li {
+    margin: 0.7rem 0;
+    background: #f0f0f0;
+    padding: 0.8rem;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+nav li:hover {
+    background: #dfe3e6;
+}
+
+a {
+    color: #0366d6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#toggle-dark {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
+    transition: transform 0.2s;
+}
+
+#toggle-dark:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+    main {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    p, li {
+        font-size: 1rem;
+    }
+}
+
+/* Modo escuro */
+.dark-mode {
+    background: #121212;
+    color: #f0f0f0;
+}
+
+.dark-mode header {
+    background: #1f1f1f;
+    color: #f0f0f0;
+}
+
+.dark-mode main {
+    background: #1e1e1e;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode nav li {
+    background: #2a2a2a;
+}
+
+.dark-mode nav li:hover {
+    background: #3a3a3a;
+}
+
+.dark-mode a {
+    color: #58a6ff;
+}

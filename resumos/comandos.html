@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Comandos Essenciais e Avançados do Git</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="resumo.css">
+</head>
+<body>
+  <button id="toggle-theme" aria-label="Alternar tema">🌙</button>
+
+  <article>
+    <h1>Comandos Essenciais e Avançados do Git</h1>
+    <p>Este documento apresenta uma lista de comandos do Git, desde os básicos até os mais avançados, com breves descrições e exemplos de uso.</p>
+
+    <hr>
+
+    <h2>1. Configuração Inicial</h2>
+    <p><strong>Nome do usuário:</strong></p>
+    <pre><code>git config --global user.name "Seu Nome" <span class="comentario"># Define seu nome para todos os repositórios</span></code></pre>
+
+    <p><strong>Email do usuário:</strong></p>
+    <pre><code>git config --global user.email "seu@email.com" <span class="comentario"># Define seu email para todos os repositórios</span></code></pre>
+
+    <p><strong>Listar configurações:</strong></p>
+    <pre><code>git config --list <span class="comentario"># Mostra todas as configurações atuais</span></code></pre>
+
+    <hr>
+
+    <h2>2. Inicialização e Clonagem</h2>
+    <p><strong>Iniciar repositório:</strong></p>
+    <pre><code>git init <span class="comentario"># Cria um novo repositório Git no diretório atual</span></code></pre>
+
+    <p><strong>Clonar repositório:</strong></p>
+    <pre><code>git clone &lt;URL-do-repositório&gt; <span class="comentario"># Faz uma cópia local do repositório remoto</span></code></pre>
+
+    <hr>
+
+    <h2>3. Registro de Alterações</h2>
+    <pre><code>git status <span class="comentario"># Mostra o estado atual do repositório</span></code></pre>
+    <pre><code>git add &lt;nome-do-arquivo&gt; <span class="comentario"># Adiciona um arquivo específico ao stage</span></code></pre>
+    <pre><code>git add . <span class="comentario"># Adiciona todas as alterações ao stage</span></code></pre>
+    <pre><code>git commit -m "Mensagem descritiva das alterações" <span class="comentario"># Grava as alterações no histórico</span></code></pre>
+    <pre><code>git commit --amend -m "Nova mensagem" <span class="comentario"># Altera o último commit (antes do push)</span></code></pre>
+
+    <hr>
+
+    <h2>4. Trabalhando com Branches</h2>
+    <pre><code>git branch &lt;nome-da-branch&gt; <span class="comentario"># Cria uma nova branch</span></code></pre>
+    <pre><code>git branch <span class="comentario"># Lista todas as branches locais</span></code></pre>
+    <pre><code>git checkout &lt;nome-da-branch&gt; <span class="comentario"># Muda para a branch especificada</span></code></pre>
+    <pre><code>git checkout -b &lt;nome-da-branch&gt; <span class="comentario"># Cria e muda para a nova branch</span></code></pre>
+    <pre><code>git merge &lt;nome-da-branch&gt; <span class="comentario"># Mescla a branch especificada na branch atual</span></code></pre>
+    <pre><code>git mergetool <span class="comentario"># Abre ferramenta para resolver conflitos</span></code></pre>
+    <pre><code>git branch -d &lt;nome-da-branch&gt; <span class="comentario"># Remove a branch local (após merge)</span></code></pre>
+
+    <hr>
+
+    <h2>5. Repositórios Remotos</h2>
+    <pre><code>git remote add origin &lt;URL-do-repositório&gt; <span class="comentario"># Adiciona um repositório remoto</span></code></pre>
+    <pre><code>git remote -v <span class="comentario"># Lista os repositórios remotos configurados</span></code></pre>
+    <pre><code>git push origin &lt;nome-da-branch&gt; <span class="comentario"># Envia commits para o repositório remoto</span></code></pre>
+    <pre><code>git pull origin &lt;nome-da-branch&gt; <span class="comentario"># Baixa e mescla alterações do remoto</span></code></pre>
+
+    <hr>
+
+    <h2>6. Histórico e Reversão</h2>
+    <pre><code>git log <span class="comentario"># Mostra o histórico de commits</span></code></pre>
+    <pre><code>git log --oneline --graph --all <span class="comentario"># Histórico compacto com gráfico</span></code></pre>
+    <pre><code>git revert &lt;hash-do-commit&gt; <span class="comentario"># Cria um novo commit desfazendo alterações</span></code></pre>
+    <pre><code>git reset --hard &lt;hash-do-commit&gt; <span class="comentario"># Volta para um commit específico (cuidado!)</span></code></pre>
+
+    <hr>
+
+    <h2>7. Stash (Armazenamento Temporário)</h2>
+    <pre><code>git stash <span class="comentario"># Guarda alterações não commitadas temporariamente</span></code></pre>
+    <pre><code>git stash list <span class="comentario"># Lista todos os stashes</span></code></pre>
+    <pre><code>git stash apply <span class="comentario"># Aplica o stash mais recente</span></code></pre>
+    <pre><code>git stash branch &lt;nome-da-branch&gt; <span class="comentario"># Cria branch a partir de um stash</span></code></pre>
+
+    <hr>
+
+    <h2>8. Tags</h2>
+    <pre><code>git tag -a &lt;nome-da-tag&gt; -m "Mensagem da tag" <span class="comentario"># Cria uma tag anotada</span></code></pre>
+    <pre><code>git tag <span class="comentario"># Lista todas as tags</span></code></pre>
+    <pre><code>git push origin --tags <span class="comentario"># Envia todas as tags para o remoto</span></code></pre>
+
+    <hr>
+
+    <h2>9. Comandos Avançados</h2>
+    <pre><code>git rebase -i &lt;commit-base&gt; <span class="comentario"># Reorganiza commits interativamente</span></code></pre>
+    <pre><code>git cherry-pick &lt;hash-do-commit&gt; <span class="comentario"># Aplica um commit específico na branch atual</span></code></pre>
+    <pre><code>
+git bisect start
+git bisect bad &lt;commit-com-bug&gt;
+git bisect good &lt;commit-sem-bug&gt; <span class="comentario"># Encontra o commit que introduziu um bug</span>
+    </code></pre>
+    <p>Auxilia na identificação do commit que introduziu um bug, através de busca binária.</p>
+
+    <a class="back-button" href="../index.html">⬅ Voltar ao Início</a>
+  </article>
+
+  <script>
+    const toggle = document.getElementById('toggle-theme');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      toggle.textContent = '☀️';
+    }
+
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
+      toggle.textContent = isDark ? '☀️' : '🌙';
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

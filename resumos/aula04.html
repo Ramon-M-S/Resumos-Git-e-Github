@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>AULA04 - Trabalhando com Branches no Git</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aula sobre como trabalhar com branches no Git - criação, manipulação e merge de branches">
+  <link rel="stylesheet" href="resumo.css">
+</head>
+<body>
+  <button id="toggle-theme" aria-label="Alternar modo escuro/claro" title="Alternar tema">🌙</button>
+
+  <article>
+    <header>
+      <h1>AULA04 - Trabalhando com Branches no Git</h1>
+      <p>Domine o uso de branches para desenvolvimento paralelo e colaborativo</p>
+    </header>
+
+    <section aria-labelledby="branch-definition">
+      <h2 id="branch-definition">O que é uma Branch?</h2>
+      <ul>
+        <li>Linha de desenvolvimento independente que permite trabalhar em diferentes versões do projeto <span class="comentario">(ramificações do código)</span></li>
+        <li>Isola mudanças sem afetar a branch principal (<code>main</code> ou <code>master</code>) <span class="comentario">(protege o código principal)</span></li>
+        <li>Principais usos:
+          <ul>
+            <li>Desenvolver novas funcionalidades <span class="comentario">(feature branches)</span></li>
+            <li>Corrigir bugs <span class="comentario">(hotfix branches)</span></li>
+            <li>Experimentar ideias <span class="comentario">(sem risco para o projeto principal)</span></li>
+            <li>Trabalhar em paralelo com outros desenvolvedores <span class="comentario">(colaboração eficiente)</span></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="branch-commands">
+      <h2 id="branch-commands">Comandos com Branches</h2>
+      <div class="code-container">
+        <pre><code>
+            git branch nome-da-branch          <span class="comentario"># Cria uma nova branch local</span>
+            git checkout nome-da-branch        <span class="comentario"># Alterna para a branch especificada</span>
+            git checkout -b nome-da-branch     <span class="comentario"># Atalho: cria e muda para a nova branch</span>
+            git merge nome-da-branch           <span class="comentario"># Mescla alterações da branch ao branch atual</span>
+            git branch -d nome-da-branch       <span class="comentario"># Remove a branch local (seguro após merge)</span>
+            git branch -D nome-da-branch       <span class="comentario"># Remove branch não mergeada (forçado)</span>
+            git branch -a                     <span class="comentario"># Lista todas branches (locais e remotas)</span>
+            git branch -vv                    <span class="comentario"># Mostra informações detalhadas das branches</span></code></pre>
+      </div>
+    </section>
+
+    <section aria-labelledby="best-practices">
+      <h2 id="best-practices">Boas Práticas com Branches</h2>
+      <ul>
+        <li>Use nomes descritivos (ex: <code>feature/login</code>, <code>bugfix/header</code>) <span class="comentario">(facilita identificação)</span></li>
+        <li>Mantenha branches curtas e focadas em uma única tarefa <span class="comentario">(princípio da responsabilidade única)</span></li>
+        <li>Sincronize frequentemente com a branch principal <span class="comentario">(evita conflitos complexos)</span></li>
+        <li>Delete branches mergeadas que não são mais necessárias <span class="comentario">(mantém o repositório organizado)</span></li>
+        <li>Use convenções de nomes consistentes com sua equipe <span class="comentario">(padronização é fundamental)</span></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="workflow">
+      <h2 id="workflow">Fluxo de Trabalho com Branches</h2>
+      <ol>
+        <li>Crie uma branch a partir da <code>main</code> <span class="comentario">(sempre comece da versão atualizada)</span></li>
+        <li>Faça commits frequentes com mensagens claras <span class="comentario">(histórico compreensível)</span></li>
+        <li>Envie alterações para o repositório remoto (<code>git push</code>) <span class="comentario">(backup e colaboração)</span></li>
+        <li>Abra um Pull Request para revisão <span class="comentario">(code review antes do merge)</span></li>
+        <li>Após aprovação, merge na branch principal <span class="comentario">(integração controlada)</span></li>
+      </ol>
+    </section>
+
+    <a class="back-button" href="../index.html" aria-label="Voltar para a página inicial">⬅ Voltar ao Início</a>
+  </article>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.getElementById('toggle-theme');
+      const body = document.body;
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      // Check localStorage or preferred scheme
+      if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && prefersDark)) {
+        enableDarkMode();
+      }
+      
+      // System preference changes
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (!localStorage.getItem('theme')) {
+          e.matches ? enableDarkMode() : disableDarkMode();
+        }
+      });
+      
+      // Toggle button
+      toggle.addEventListener('click', () => {
+        body.classList.contains('dark-mode') ? disableDarkMode() : enableDarkMode();
+      });
+      
+      function enableDarkMode() {
+        body.classList.add('dark-mode');
+        toggle.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      }
+      
+      function disableDarkMode() {
+        body.classList.remove('dark-mode');
+        toggle.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+</body>
+</html>

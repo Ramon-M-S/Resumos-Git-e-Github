@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>AULA05 - GitHub na Prática: Pull Request, Fork e Colaboração</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Resumo sobre como trabalhar com Fork, Pull Requests e colaboração no GitHub">
+  <link rel="stylesheet" href="resumo.css">
+</head>
+<body>
+  <button id="toggle-theme" aria-label="Alternar modo escuro/claro" title="Alternar tema">🌙</button>
+
+  <article>
+    <header>
+      <h1>AULA05 - GitHub na Prática: Pull Request, Fork e Colaboração</h1>
+      <p>Conceitos essenciais para trabalhar em equipe usando GitHub</p>
+    </header>
+
+    <section aria-labelledby="fork-heading">
+      <h2 id="fork-heading">Fork</h2>
+      <ul>
+        <li>Cria uma cópia de um repositório no seu perfil GitHub <span class="comentario">(como uma cópia pessoal do projeto)</span></li>
+        <li>Permite contribuir em projetos sem acesso direto ao repositório original <span class="comentario">(modelo comum em open source)</span></li>
+        <li>Mantém conexão com o projeto original (upstream) <span class="comentario">(para sincronizar atualizações)</span></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="pr-heading">
+      <h2 id="pr-heading">Pull Request (PR)</h2>
+      <ol>
+        <li><strong>Fork</strong> - Criar uma cópia do repositório original <span class="comentario">(primeiro passo para contribuir)</span></li>
+        <li><strong>Clone</strong> - Baixar o repositório para sua máquina <span class="comentario">(git clone URL-do-seu-fork)</span></li>
+        <li><strong>Branch</strong> - Criar uma branch para suas alterações <span class="comentario">(isolamento das mudanças)</span></li>
+        <li><strong>Alterações e commit</strong> - Desenvolver e versionar suas mudanças <span class="comentario">(commits atômicos e descritivos)</span></li>
+        <li><strong>Push</strong> - Enviar alterações para seu repositório <span class="comentario">(git push origin nome-da-branch)</span></li>
+        <li><strong>Criar PR</strong> - Solicitar a inclusão das alterações no projeto original <span class="comentario">(interface do GitHub)</span></li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="issues-heading">
+      <h2 id="issues-heading">Issues</h2>
+      <ul>
+        <li>Sistema de gerenciamento de tarefas do GitHub <span class="comentario">(similar a tickets)</span></li>
+        <li>Usado para:
+          <ul>
+            <li>Relatar bugs <span class="comentario">(com steps para reproduzir)</span></li>
+            <li>Sugerir melhorias <span class="comentario">(feature requests)</span></li>
+            <li>Discutir ideias <span class="comentario">(brainstorming)</span></li>
+            <li>Gerenciar projetos <span class="comentario">(com milestones e labels)</span></li>
+          </ul>
+        </li>
+        <li>Pode ser vinculado a Pull Requests <span class="comentario">(fechar issues automaticamente)</span></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="flow-heading">
+      <h2 id="flow-heading">GitHub Flow</h2>
+      <ol>
+        <li><strong>Branch</strong> - Criar a partir da main <span class="comentario">(git checkout -b feature/nova)</span></li>
+        <li><strong>Commits</strong> - Versionar alterações descritivamente <span class="comentario">(mensagens claras e objetivas)</span></li>
+        <li><strong>Push</strong> - Publicar a branch <span class="comentario">(compartilhar progresso)</span></li>
+        <li><strong>PR</strong> - Abrir Pull Request para revisão <span class="comentario">(mesmo com trabalho inacabado)</span></li>
+        <li><strong>Revisão</strong> - Discussão e aprovação <span class="comentario">(code review)</span></li>
+        <li><strong>Merge</strong> - Integrar alterações à main <span class="comentario">(após aprovação)</span></li>
+      </ol>
+    </section>
+
+    <a class="back-button" href="../index.html" aria-label="Voltar para a página inicial">⬅ Voltar ao Início</a>
+  </article>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.getElementById('toggle-theme');
+      const body = document.body;
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      // Check localStorage or prefered scheme
+      if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && prefersDark)) {
+        enableDarkMode();
+      }
+      
+      // System preference changes
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (!localStorage.getItem('theme')) {
+          e.matches ? enableDarkMode() : disableDarkMode();
+        }
+      });
+      
+      // Toggle button
+      toggle.addEventListener('click', () => {
+        body.classList.contains('dark-mode') ? disableDarkMode() : enableDarkMode();
+      });
+      
+      function enableDarkMode() {
+        body.classList.add('dark-mode');
+        toggle.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      }
+      
+      function disableDarkMode() {
+        body.classList.remove('dark-mode');
+        toggle.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+</body>
+</html>

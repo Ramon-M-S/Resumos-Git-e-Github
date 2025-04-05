@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>AULA06 - Boas Práticas com Git e GitHub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aula sobre boas práticas de uso do Git e GitHub - commits, organização de repositórios e segurança">
+  <link rel="stylesheet" href="resumo.css">
+</head>
+<body>
+  <button id="toggle-theme" aria-label="Alternar modo escuro/claro" title="Alternar tema">🌙</button>
+
+  <article>
+    <header>
+      <h1>AULA06 - Boas Práticas com Git e GitHub</h1>
+      <p>Padrões profissionais para um versionamento eficiente e colaboração segura</p>
+    </header>
+
+    <section aria-labelledby="commits-heading">
+      <h2 id="commits-heading">Commits Significativos</h2>
+      <div class="code-container">
+        <pre><code>git commit -m "Adiciona autenticação via OAuth"   <span class="comentario"># Bom - específico</span>
+git commit -m "Corrige bug no cálculo de impostos" <span class="comentario"># Bom - explica a mudança</span>
+git commit -m "Atualiza arquivos"                 <span class="comentario"># Ruim - vago</span></code></pre>
+      </div>
+      <ul>
+        <li>Use o tempo verbal no imperativo ("Adiciona" em vez de "Adicionei") <span class="comentario">(padrão convencional)</span></li>
+        <li>Limite a 50 caracteres no assunto (primeira linha) <span class="comentario">(para legibilidade)</span></li>
+        <li>Para explicações detalhadas, use o corpo do commit (pule uma linha após o assunto) <span class="comentario">(explicação mais completa)</span></li>
+        <li>Referencie issues relacionadas (ex: "Corrige #123") <span class="comentario">(vinculação automática)</span></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="gitignore-heading">
+      <h2 id="gitignore-heading"><code>.gitignore</code></h2>
+      <ul>
+        <li>Arquivo que especifica quais arquivos/pastas devem ser ignorados pelo Git <span class="comentario">(evita commits acidentais)</span></li>
+        <li>Itens comuns para incluir:
+          <ul>
+            <li>Dependências (<code>node_modules/</code>, <code>vendor/</code>) <span class="comentario">(podem ser reinstaladas)</span></li>
+            <li>Arquivos de ambiente (<code>.env</code>, <code>config/secrets.yml</code>) <span class="comentario">(contêm dados sensíveis)</span></li>
+            <li>Arquivos gerados (<code>*.log</code>, <code>*.tmp</code>) <span class="comentario">(não são código fonte)</span></li>
+            <li>Arquivos do sistema (<code>.DS_Store</code>, <code>Thumbs.db</code>) <span class="comentario">(específicos do SO)</span></li>
+          </ul>
+        </li>
+        <li>Use templates prontos para sua linguagem/framework <span class="comentario">(economiza tempo)</span></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="readme-heading">
+      <h2 id="readme-heading">Readme (<code>README.md</code>)</h2>
+      <ul>
+        <li>Seções essenciais:
+          <ol>
+            <li><strong>Título e descrição</strong> - O que o projeto faz <span class="comentario">(visão geral)</span></li>
+            <li><strong>Pré-requisitos</strong> - O que é necessário para usar/desenvolver <span class="comentario">(dependências)</span></li>
+            <li><strong>Instalação</strong> - Passo a passo para configurar <span class="comentario">(setup inicial)</span></li>
+            <li><strong>Uso</strong> - Como executar/operar <span class="comentario">(exemplos básicos)</span></li>
+            <li><strong>Contribuição</strong> - Como outros podem ajudar <span class="comentario">(guidelines)</span></li>
+            <li><strong>Licença</strong> - Informações sobre uso/distribuição <span class="comentario">(legal)</span></li>
+          </ol>
+        </li>
+        <li>Use formatação Markdown para:
+          <ul>
+            <li>Cabeçalhos (<code>#</code>, <code>##</code>) <span class="comentario">(hierarquia clara)</span></li>
+            <li>Listas (como esta) <span class="comentario">(organização visual)</span></li>
+            <li>Blocos de código (```) <span class="comentario">(destaque para comandos)</span></li>
+            <li>Links e imagens <span class="comentario">(recursos visuais)</span></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="license-heading">
+      <h2 id="license-heading">Licença</h2>
+      <ul>
+        <li>Define os direitos e permissões sobre o código <span class="comentario">(aspecto legal importante)</span></li>
+        <li>Tipos comuns:
+          <ul>
+            <li><strong>MIT</strong> - Permissiva, permite quase qualquer uso com atribuição <span class="comentario">(mais popular)</span></li>
+            <li><strong>GPL</strong> - Copyleft, exige que derivados usem mesma licença <span class="comentario">(open source forte)</span></li>
+            <li><strong>Apache 2.0</strong> - Similar à MIT com proteção contra patentes <span class="comentario">(empresarial)</span></li>
+            <li><strong>Creative Commons</strong> - Para conteúdo não-software <span class="comentario">(documentação, arte)</span></li>
+          </ul>
+        </li>
+        <li>Adicione um arquivo <code>LICENSE</code> na raiz do projeto <span class="comentario">(obrigatório para muitos projetos)</span></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="security-heading">
+      <h2 id="security-heading">Segurança</h2>
+      <ul>
+        <li>Nunca comitar:
+          <ul>
+            <li>Credenciais (senhas, tokens API, chaves SSH) <span class="comentario">(risco de exposição)</span></li>
+            <li>Arquivos de configuração com dados sensíveis <span class="comentario">(use templates)</span></li>
+            <li>Certificados digitais <span class="comentario">(validade limitada)</span></li>
+          </ul>
+        </li>
+        <li>Boas práticas:
+          <ol>
+            <li>Use variáveis de ambiente para configurações sensíveis <span class="comentario">(.env.local)</span></li>
+            <li>Adicione arquivos sensíveis ao <code>.gitignore</code> <span class="comentario">(prevenção)</span></li>
+            <li>Revise o histórico se informações sensíveis foram commitadas acidentalmente <span class="comentario">(git log)</span></li>
+            <li>Use ferramentas como <code>git-secrets</code> para prevenção <span class="comentario">(checagem automática)</span></li>
+          </ol>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="additional-heading">
+      <h2 id="additional-heading">Práticas Adicionais</h2>
+      <ul>
+        <li><strong>Branch Protection</strong>: Configure regras para branches principais <span class="comentario">(ex: requer revisões)</span></li>
+        <li><strong>Pull Requests</strong>: Descreva mudanças claramente e use templates <span class="comentario">(padronização)</span></li>
+        <li><strong>Semântica de Versionamento</strong>: Use Semantic Versioning <span class="comentario">(MAJOR.MINOR.PATCH)</span></li>
+        <li><strong>Git Hooks</strong>: Automatize verificações antes de commits/pushes <span class="comentario">(pré-commit, pré-push)</span></li>
+      </ul>
+    </section>
+
+    <a class="back-button" href="../index.html" aria-label="Voltar para a página inicial">⬅ Voltar ao Início</a>
+  </article>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.getElementById('toggle-theme');
+      const body = document.body;
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      // Check localStorage or preferred scheme
+      if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && prefersDark)) {
+        enableDarkMode();
+      }
+      
+      // System preference changes
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (!localStorage.getItem('theme')) {
+          e.matches ? enableDarkMode() : disableDarkMode();
+        }
+      });
+      
+      // Toggle button
+      toggle.addEventListener('click', () => {
+        body.classList.contains('dark-mode') ? disableDarkMode() : enableDarkMode();
+      });
+      
+      function enableDarkMode() {
+        body.classList.add('dark-mode');
+        toggle.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      }
+      
+      function disableDarkMode() {
+        body.classList.remove('dark-mode');
+        toggle.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+</body>
+</html>

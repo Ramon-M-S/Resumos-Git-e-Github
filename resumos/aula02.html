@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>AULA02 - Git na Prática</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="resumo.css">
+</head>
+<body>
+  <button id="toggle-theme" aria-label="Alternar modo escuro/claro">🌙</button>
+
+  <article>
+    <h1>AULA02 - Git na Prática: Comandos Básicos</h1>
+
+    <h2>Configuração Inicial</h2>
+    <pre><code>git config --global user.name "Seu Nome" <span class="comentario"># Define seu nome de usuário globalmente</span>
+git config --global user.email "seu@email.com" <span class="comentario"># Define seu email globalmente</span></code></pre>
+
+    <h2>Criando um Repositório</h2>
+    <pre><code>git init <span class="comentario"># Inicializa um novo repositório Git no diretório atual</span></code></pre>
+
+    <h2>Comandos Importantes</h2>
+    <ul>
+      <li><code>git status</code><span class="comentario">: mostra o estado atual do repositório</span></li>
+      <li><code>git add nome-arquivo</code><span class="comentario">: adiciona um arquivo à área de stage</span></li>
+      <li><code>git add .</code><span class="comentario">: adiciona todas as alterações</span></li>
+      <li><code>git commit -m "mensagem"</code><span class="comentario">: salva as alterações com uma mensagem</span></li>
+      <li><code>git log</code><span class="comentario">: exibe o histórico de commits</span></li>
+    </ul>
+
+    <a class="back-button" href="../index.html">⬅ Voltar ao Início</a>
+  </article>
+
+  <script>
+    const toggle = document.getElementById('toggle-theme');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      toggle.textContent = '☀️';
+    }
+
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
+      toggle.textContent = isDark ? '☀️' : '🌙';
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

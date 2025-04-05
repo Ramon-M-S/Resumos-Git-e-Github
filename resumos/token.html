@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Personal Access Token (PAT) - GitHub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="resumo.css">
+</head>
+<body>
+  <button id="toggle-theme" aria-label="Alternar modo escuro/claro">🌙</button>
+
+  <article>
+    <h1>O que é um Personal Access Token (PAT)?</h1>
+    <p>
+      Um Personal Access Token (PAT) é uma chave de acesso usada no lugar da senha ao interagir com o GitHub via HTTPS.
+      Ele aumenta a segurança e é necessário para autenticação desde 2021. <span class="comentario">(substitui a autenticação por senha)</span>
+    </p>
+
+    <hr>
+
+    <h2>Criando um Token</h2>
+    <ol>
+      <li>Acesse seu perfil no GitHub: <a href="https://github.com" target="_blank">github.com</a> <span class="comentario">(necessário login)</span></li>
+      <li>Vá em <strong>Settings</strong> &gt; <strong>Developer Settings</strong> <span class="comentario">(menu de configurações avançadas)</span></li>
+      <li>Clique em <strong>Personal access tokens</strong> &gt; <strong>Tokens (classic)</strong> <span class="comentario">(versão clássica mais usada)</span></li>
+      <li>Selecione <strong>Generate new token</strong> <span class="comentario">(inicia processo de criação)</span></li>
+      <li>Informe:
+        <ul>
+          <li>Nome do token <span class="comentario">(ex: "Meu Notebook Trabalho")</span></li>
+          <li>Data de expiração <span class="comentario">(recomendado 30-90 dias)</span></li>
+          <li>Permissões (recomenda-se pelo menos <code>repo</code>) <span class="comentario">(controle de acesso granular)</span></li>
+        </ul>
+      </li>
+      <li>Clique em <strong>Generate token</strong> <span class="comentario">(confirmação final)</span></li>
+      <li>Copie e salve o token com segurança – ele não será mostrado novamente <span class="comentario">(armazene em gerenciador de senhas)</span></li>
+    </ol>
+
+    <hr>
+
+    <h2>Usando o Token</h2>
+    <p>Em operações Git via HTTPS (ex: <code>git push</code> ou <code>git pull</code>), o Git solicitará:</p>
+    <ul>
+      <li><strong>Username</strong>: seu usuário GitHub <span class="comentario">(não seu email)</span></li>
+      <li><strong>Password</strong>: cole o token gerado <span class="comentario">(funciona como senha temporária)</span></li>
+    </ul>
+
+    <pre><code>git push origin main <span class="comentario"># Será solicitada a autenticação com token</span></code></pre>
+
+    <hr>
+
+    <h2>Dicas de Segurança</h2>
+    <ul>
+      <li><strong>Não compartilhe</strong> seu token <span class="comentario">(equivalente a uma senha)</span></li>
+      <li>Use um gerenciador de senhas para armazená-lo <span class="comentario">(ex: LastPass, 1Password)</span></li>
+      <li>Revogue tokens não utilizados <span class="comentario">(em Settings > Developer Settings)</span></li>
+      <li>Nunca salve o token diretamente no código <span class="comentario">(risco de exposição pública)</span></li>
+    </ul>
+
+    <hr>
+
+    <h2>Quando Utilizar</h2>
+    <ul>
+      <li>Em ambientes onde é necessário autenticar via HTTPS <span class="comentario">(principal uso)</span></li>
+      <li>Em scripts e automações <span class="comentario">(CI/CD, pipelines)</span></li>
+      <li>Para substituir o uso de senha ao acessar o GitHub pela linha de comando <span class="comentario">(mais seguro que senha)</span></li>
+    </ul>
+
+    <a class="back-button" href="../index.html">⬅ Voltar ao Início</a>
+  </article>
+
+  <script>
+    const toggle = document.getElementById('toggle-theme');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      toggle.textContent = '☀️';
+    }
+
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
+      toggle.textContent = isDark ? '☀️' : '🌙';
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

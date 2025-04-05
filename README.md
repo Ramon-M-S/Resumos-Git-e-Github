@@ -11,7 +11,7 @@ Este repositório contém **resumos das aulas do módulo "Versionamento de Códi
 - `AULA05` – Pull Request, Fork e Colaboração
 - `AULA06` – Boas Práticas
 - `TOKEN` – Criar e Usar um Token no GitHub
-
+- `Comandos Git` – Lista de comandos Git
 ## Objetivo
 Facilitar o aprendizado prático de Git e GitHub com base no conteúdo do bootcamp.
 

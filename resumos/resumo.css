@@ -104,7 +104,7 @@ body:not(.dark-mode) .comentario {
 }
 
 body.dark-mode .comentario {
-    color: #7cb342; 
+    color: #74b62e; 
     font-style: italic;
     text-shadow: 0 0 1px rgba(124, 179, 66, 0.3);
 }
@@ -113,7 +113,7 @@ pre {
     white-space: pre-wrap; /* Permite quebra de linha dentro de <pre> */
     word-break: break-word; /* Quebra palavras longas */
     overflow-x: auto; /* Scroll horizontal se necessário */
-    background-color: #eee;
+    background-color: #ecebeb;
     padding: 1em;
     border-radius: 8px;
     font-size: 0.95rem;
@@ -134,3 +134,11 @@ pre code .comentario {
     }
 }
 
+/* Para <code> dentro de <pre> */
+body:not(.dark-mode) pre code {
+    color: #000;
+}
+
+body.dark-mode pre code {
+    color: #000000;
+}
